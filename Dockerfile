@@ -1,13 +1,22 @@
 FROM ubuntu
 ADD genUser.sh /genUser.sh
 ADD permit.sh /permit.sh
-ADD schedule1.sh /schedule1.sh
-ADD schedule2.sh /schedule2.sh
+ADD schedule.sh /schedule.sh
+ADD s3tcron.sh /s3tcron.sh
 ADD attendance.sh /attendance.sh
 ADD alia5es.sh /alia5es.sh
+ADD genMom.sh /genMom.sh
+ADD future.txt /future.txt
+ADD attendance.log /attendance.log
 RUN chmod u+x /genUser.sh
 RUN chmod u+x /permit.sh
-RUN chmod u+x /schedule1.sh
-RUN chmod u+x /schedule2.sh
+RUN chmod u+x /schedule.sh
+RUN chmod u+x /s3tcron.sh
 RUN chmod u+x /attendance.sh
 RUN chmod u+x /alia5es.sh
+RUN chmod u+x /genMom.sh
+RUN /alia5es.sh
+RUN apt-get update
+#RUN echo "deb http://cz.archive.ubuntu.com/ubuntu trusty main" >> /etc/apt/sources.list
+RUN apt-get update
+RUN apt-get install -y acl
